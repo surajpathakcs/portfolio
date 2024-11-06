@@ -1,3 +1,4 @@
+
 # CLI Portfolio
 
 A command-line interface (CLI) inspired portfolio that simulates a terminal experience for showcasing your skills, projects, and professional journey. Built with Next.js, React, and Tailwind CSS, this portfolio provides an engaging, retro-themed way to explore your personal information.
