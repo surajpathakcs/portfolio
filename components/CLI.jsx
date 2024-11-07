@@ -52,15 +52,32 @@ const CLI = () => {
         </div>
       </div>
     ),
-    about: "Hello! I'm Suraj, a passionate developer from Nepal.",
-    socials: "Find me on GitHub, LinkedIn, and Twitter.",
+    about:
+      "I’m a developer from Nepal with a focus on learning across a wide tech landscape—from backend services in .NET & Nodejs to frontend finesse with React, Next.js, and Tailwind CSS. Always a learner, I believe in approaching challenges with curiosity and an eagerness to expand my toolkit. If there’s one thing I’d say defines me, it’s my drive to understand how each line of code connects to the bigger picture. I’m building cool things—one project, one command, one insight at a time.",
+      socials: (
+        <div>
+          <span>Find me on:</span>
+          <div className="flex gap-2">
+            <Link href="https://github.com/surajpathakcs" target="_blank" rel="noopener noreferrer">
+              <span className="text-blue-500">GitHub</span>
+            </Link>
+            <Link href="https://linkedin.com/in/surajintheframe" target="_blank" rel="noopener noreferrer">
+              <span className="text-blue-500">LinkedIn</span>
+            </Link>
+            <Link href="https://twitter.com/surajintheframe" target="_blank" rel="noopener noreferrer">
+              <span className="text-blue-500">Twitter</span>
+            </Link>
+          </div>
+        </div>
+      ),
+      
     skills:
-      "Technical Skills:\n- JavaScript, React, Next.js\n- MERN, MongoDB, mySQL\n- C++, Data Structures",
+      "Technical Skills:\n- MERN , Next.js ,mySQL, C++ and many more ",
     projects:
-      "Projects:\n1. Project A - A cool project\n2. Project B - Another interesting project",
-    resume: "You can view my resume at: [Link to Resume]",
+      "Projects:\n1. CLI Portfolio - This CLI Portfolio that you are on right now , you can view the source code in my github in 'socials' command\n",
+    resume: "You can view my resume at: [linkedin.com/surajintheframe]",
     experience:
-      "Experience:\n- Software Developer at XYZ\n- Internship at ABC Company",
+      "Experience:\n- Multiple Full Stack Projects ",
     goals: "My goals include expanding my knowledge in AI and cloud computing.",
     clear: "clear",
   };
@@ -92,31 +109,35 @@ const CLI = () => {
 
   return (
     <div>
-      
-    <div className="text-white  font-mono flex flex-col justify-start items-start h-screen">
-      {output.map((line, index) => (
-        <p key={index} className={`whitespace-pre-wrap
+      <div className="text-white  font-mono flex flex-col justify-start items-start h-screen">
+        {output.map((line, index) => (
+          <p
+            key={index}
+            className={`whitespace-pre-wrap
 
-         ${ typeof line == "string" && (line.includes('help') || line.includes('commands') ? "text-orange-500" : "text-white" )}
+         ${
+           typeof line == "string" &&
+           (line.includes("help") || line.includes("commands")
+             ? "text-orange-500"
+             : "text-white")
+         }
           
-          `}>
-          {line}
-        </p>
-
-        
-    
-      ))}
-      <form onSubmit={handleCommand} className="flex">
-        <span className="text-cyan-400">visitor@suraj~$</span>&nbsp;
-        <input
-          type="text"
-          value={command}
-          onChange={(e) => setCommand(e.target.value)}
-          className="bg-transparent outline-none text-purple-600 flex-1"
-          autoFocus
-        />
-      </form>
-    </div>
+          `}
+          >
+            {line}
+          </p>
+        ))}
+        <form onSubmit={handleCommand} className="flex">
+          <span className="text-cyan-400">visitor@suraj~$</span>&nbsp;
+          <input
+            type="text"
+            value={command}
+            onChange={(e) => setCommand(e.target.value)}
+            className="bg-transparent outline-none text-purple-600 flex-1"
+            autoFocus
+          />
+        </form>
+      </div>
     </div>
   );
 };
