@@ -1,5 +1,7 @@
 
-# CLI Portfolio
+# CLI Portfolio 
+
+*Disclaimer: Use as Template by forking and cloning the repo
 
 A command-line interface (CLI) inspired portfolio that simulates a terminal experience for showcasing your skills, projects, and professional journey. Built with Next.js, React, and Tailwind CSS, this portfolio provides an engaging, retro-themed way to explore your personal information.
 
@@ -55,9 +57,6 @@ help - List available commands</br>
 about - View a short bio</br>
 skills - See technical skills</br>
 projects - List notable projects</br>
-resume - Link to resume (update with your link)</br>
-experience - Professional history</br>
-goals - Future aspirations</br>
 clear - Clear the terminal screen</br>
 Customize these commands in the commands object within the CLI component to add or modify sections as needed.
 
