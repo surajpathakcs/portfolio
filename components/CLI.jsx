@@ -69,7 +69,7 @@ const CLI = () => {
         I’m building cool things—
         <span className="text-amber-500">one</span> project,{" "}
         <span className="text-amber-500"> one </span>command,
-        <span className="text-amber-500"> one </span>insight at a time.",
+        <span className="text-amber-500"> one </span>insight at a time.,
       </pre>
     ),
     socials: (
@@ -119,7 +119,7 @@ const CLI = () => {
     projects:
     <pre className="whitespace-pre-wrap break-words">
       <span className="text-orange-500">Projects:
-        </span><br />1. <span className="text-green-500">CLI Portfolio</span> - This CLI Portfolio that you are on right now ,  you can view the source code in my github using 'socials' command <br />
+        </span><br />1. <span className="text-green-500">CLI Portfolio</span> - This CLI Portfolio that you are on right now ,  you can view the source code in my github using &apos;socials&apos; command <br />
     </pre>,
     clear: "clear",
   };
