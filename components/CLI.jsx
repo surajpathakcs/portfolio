@@ -1,20 +1,14 @@
 "use client";
-import { useState, useEffect ,useRef} from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
-
-
-
 const CLI = () => {
-
   var [command, setCommand] = useState("");
   const [output, setOutput] = useState([
     "Welcome to my portfolio!",
     "Type 'help' to get a list of available commands.",
     "Use ↑ and ↓ to navigate command history.",
   ]);
-  
-
 
   //useRef to create a new reference
   const outputEndRef = useRef(null);
@@ -26,10 +20,6 @@ const CLI = () => {
       behavior: "smooth",
     });
   }, [output]);
-
-
-
-  
 
   const commands = {
     help: (
@@ -54,18 +44,7 @@ const CLI = () => {
             <p className="text-orange-500"> projects </p>{" "}
             <p className="font-thin">- View some of my cool projects</p>
           </div>
-          <div className="flex gap-2 items-center">
-            <p className="text-orange-500"> resume </p>{" "}
-            <p className="font-thin">- Take a look at my resume</p>
-          </div>
-          <div className="flex gap-2 items-center">
-            <p className="text-orange-500"> experience </p>{" "}
-            <p className="font-thin">- Explore my professional journey</p>
-          </div>
-          <div className="flex gap-2 items-center">
-            <p className="text-orange-500"> goals </p>{" "}
-            <p className="font-thin">- Discover my aspirations</p>
-          </div>
+          
           <div className="flex gap-2 items-center">
             <p className="text-orange-500"> clear </p>{" "}
             <p className="font-thin">- Clear the terminal</p>
@@ -75,7 +54,7 @@ const CLI = () => {
     ),
     about: (
       <pre>
-        &nbsp;&nbsp;&nbsp;&nbsp;I’m a developer from Nepal with a focus on
+        &nbsp;&nbsp;&nbsp;&nbsp;I’m a <span className="text-orange-500">developer</span> from Nepal with a focus on
         learning across a wide tech landscape—from <br></br>
         backend services in{" "}
         <span className="text-lime-500">.NET & Nodejs </span> to frontend
@@ -88,9 +67,9 @@ const CLI = () => {
         If there’s one thing I’d say defines me, it’s my drive to understand how
         each line of code connects to the bigger picture.<br></br>
         I’m building cool things—
-        <span className="text-slate-600">one</span> project,{" "}
-        <span className="text-slate-500"> one </span>command,
-        <span className="text-slate-500"> one </span>insight at a time.",
+        <span className="text-amber-500">one</span> project,{" "}
+        <span className="text-amber-500"> one </span>command,
+        <span className="text-amber-500"> one </span>insight at a time.",
       </pre>
     ),
     socials: (
@@ -122,20 +101,29 @@ const CLI = () => {
       </div>
     ),
 
-    skills: "Technical Skills:\n- MERN , Next.js ,mySQL, C++ and many more ",
+    skills: (
+      <pre>
+        <span className="text-orange-500">
+          Technical Skills: 
+        </span> 
+        <ul className="pl-9">
+        <li><span className="text-orange-500">Backend:</span> Node.js, Express, .NET</li>
+        <li><span className="text-orange-500">Frontend:</span> React, Next.js, Tailwind</li>
+        <li><span className="text-orange-500">Databases:</span> MongoDB, MySQL,</li>
+        <li><span className="text-orange-500">Version </span>Control: Git, GitHub</li>
+        <li><span className="text-orange-500">Other:</span> Docker, Bash</li>
+      </ul>
+      </pre>
+    ),
+
     projects:
-      "Projects:\n1. CLI Portfolio - This CLI Portfolio that you are on right now , you can view the source code in my github in 'socials' command\n",
-    resume: "You can view my resume at: [linkedin.com/surajintheframe]",
-    experience: "Experience:\n- Multiple Full Stack Projects ",
-    goals: "My goals include expanding my knowledge in AI and cloud computing.",
+    <pre className="whitespace-pre-wrap break-words">
+      <span className="text-orange-500">Projects:
+        </span><br />1. <span className="text-green-500">CLI Portfolio</span> - This CLI Portfolio that you are on right now ,  you can view the source code in my github using 'socials' command <br />
+    </pre>,
     clear: "clear",
   };
 
-
-
-
-
-  
   const handleCommand = (e) => {
     e.preventDefault();
 
@@ -144,7 +132,7 @@ const CLI = () => {
 
     let newOutput = [...output];
 
-    if (commands[command]) { 
+    if (commands[command]) {
       if (command === "clear") {
         newOutput = [
           "Welcome to my portfolio!",
@@ -155,9 +143,12 @@ const CLI = () => {
         newOutput.push(
           <div>
             <span className="text-cyan-400">visitor@suraj~$</span>&nbsp;
-            {command}
+            <span className="text-purple-600">
+              {command}
+              </span>
           </div>,
-          commands[command]
+          commands[command],
+          <br/>
         );
       }
     } else {
@@ -169,7 +160,8 @@ const CLI = () => {
         <div>
           <span className="text-red-700">command not found</span>&nbsp;
           {command}
-        </div>
+        </div>,
+        <br/>
       );
     }
 
@@ -178,39 +170,37 @@ const CLI = () => {
   };
 
   return (
-      <div className="text-white  font-mono flex flex-col justify-start items-start h-screen">
-        {output.map((line, index) => ( 
-
-          <p
-            key={index}
-            className={`whitespace-pre-wrap
+    <div className="text-white  font-mono flex flex-col justify-start items-start h-screen">
+      {output.map((line, index) => (
+        <p
+          key={index}
+          className={`whitespace-pre-wrap
            ${
-           typeof line == "string" &&
-           (line.includes("help") || line.includes("commands"))
-             ? "text-orange-400"
-             : "text-white"
-         }`}>
-            {line}
-          </p>
-        ))}
-        {/* ################################   Use Reference    #####################################*/}
-        <div ref={outputEndRef} />
-        {/* ################################   Use Reference    #####################################*/}
-
-          {" "}
-          {/* keeps the view scrolled to the bottom  */}
-          <form onSubmit={handleCommand} className="flex">
-            <span className="text-cyan-400">visitor@suraj~$</span>&nbsp;
-            <input
-              type="text"
-              value={command}
-              onChange={(e) => setCommand(e.target.value)}
-              className="bg-transparent outline-none text-purple-600 flex-1"
-              autoFocus
-            />
-          </form>
-        </div>
-      );
-    };
+             typeof line == "string" &&
+             (line.includes("help") || line.includes("commands"))
+               ? "text-orange-400"
+               : "text-white"
+           }`}
+        >
+          {line}
+        </p>
+      ))}
+      {/* ################################   Use Reference    #####################################*/}
+      <div ref={outputEndRef} />
+      {/* ################################   Use Reference    #####################################*/}{" "}
+      {/* keeps the view scrolled to the bottom  */}
+      <form onSubmit={handleCommand} className="flex">
+        <span className="text-cyan-400">visitor@suraj~$</span>&nbsp;
+        <input
+          type="text"
+          value={command}
+          onChange={(e) => setCommand(e.target.value)}
+          className="bg-transparent outline-none text-purple-600 flex-1"
+          autoFocus
+        />
+      </form>
+    </div>
+  );
+};
 
 export default CLI;
