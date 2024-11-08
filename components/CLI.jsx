@@ -52,32 +52,60 @@ const CLI = () => {
         </div>
       </div>
     ),
-    about:
-      "I’m a developer from Nepal with a focus on learning across a wide tech landscape—from backend services in .NET & Nodejs to frontend finesse with React, Next.js, and Tailwind CSS. Always a learner, I believe in approaching challenges with curiosity and an eagerness to expand my toolkit. If there’s one thing I’d say defines me, it’s my drive to understand how each line of code connects to the bigger picture. I’m building cool things—one project, one command, one insight at a time.",
-      socials: (
-        <div>
-          <span>Find me on:</span>
-          <div className="flex gap-2">
-            <Link href="https://github.com/surajpathakcs" target="_blank" rel="noopener noreferrer">
-              <span className="text-blue-500">GitHub</span>
-            </Link>
-            <Link href="https://linkedin.com/in/surajintheframe" target="_blank" rel="noopener noreferrer">
-              <span className="text-blue-500">LinkedIn</span>
-            </Link>
-            <Link href="https://twitter.com/surajintheframe" target="_blank" rel="noopener noreferrer">
-              <span className="text-blue-500">Twitter</span>
-            </Link>
-          </div>
+    about: (
+      <pre>
+        I’m a developer from Nepal with a focus on learning across a wide tech
+        landscape—from <br></br>
+        backend services in{" "}
+        <span className="text-lime-500">.NET & Nodejs </span> to frontend
+        finesse with{" "}
+        <span className="text-lime-500">React, Next.js, and Tailwind CSS</span>.{" "}
+        <br></br>
+        Always a learner, I believe in approaching challenges with{" "}
+        <span className="text-red-500">curiosity</span> and an eagerness to
+        expand my toolkit. <br></br>
+        If there’s one thing I’d say defines me, it’s my drive to understand how
+        each line of code connects to the bigger picture.<br></br>
+        I’m building cool things—
+        <span className="text-indigo-600">one</span> project,{" "}
+        <span className="text-indigo-500"> one</span>command,
+        <span className="text-indigo-500">one</span>insight at a time.",
+      </pre>
+    ),
+    socials: (
+      <div>
+        <span>Find me on:</span>
+        <div className="flex gap-2">
+          <Link
+            href="https://github.com/surajpathakcs"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="text-blue-500">GitHub</span>
+          </Link>
+          <Link
+            href="https://linkedin.com/in/surajintheframe"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="text-blue-500">LinkedIn</span>
+          </Link>
+          <Link
+            href="https://twitter.com/surajintheframe"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="text-blue-500">Twitter</span>
+          </Link>
         </div>
-      ),
-      
-    skills:
-      "Technical Skills:\n- MERN , Next.js ,mySQL, C++ and many more ",
+      </div>
+    ),
+
+    skills: "Technical Skills:\n- MERN , Next.js ,mySQL, C++ and many more ",
     projects:
       "Projects:\n1. CLI Portfolio - This CLI Portfolio that you are on right now , you can view the source code in my github in 'socials' command\n",
     resume: "You can view my resume at: [linkedin.com/surajintheframe]",
-    experience:
-      "Experience:\n- Multiple Full Stack Projects ",
+    experience: "Experience:\n- Multiple Full Stack Projects ",
     goals: "My goals include expanding my knowledge in AI and cloud computing.",
     clear: "clear",
   };
@@ -94,12 +122,24 @@ const CLI = () => {
           "Use ↑ and ↓ to navigate command history.",
         ];
       } else {
-        newOutput.push(`visitor@suraj~$ ${command}`, commands[command]);
+        newOutput.push(
+          <div>
+            <span className="text-cyan-400">visitor@suraj~$</span>&nbsp;
+            {command}
+          </div>,
+          commands[command]
+        );
       }
     } else {
       newOutput.push(
-        `visitor@suraj~$ ${command}`,
-        `Command not found: ${command}`
+        <div>
+            <span className="text-cyan-400">visitor@suraj~$</span>&nbsp;
+            {command}
+          </div>,
+        <div>
+        <span className="text-red-700">command not found</span>&nbsp;
+        {command}
+      </div>
       );
     }
 
@@ -117,9 +157,9 @@ const CLI = () => {
 
          ${
            typeof line == "string" &&
-           (line.includes("help") || line.includes("commands")
-             ? "text-orange-500"
-             : "text-white")
+           (line.includes("help") || line.includes("commands"))
+             ? "text-orange-400"
+             : "text-white"
          }
           
           `}
