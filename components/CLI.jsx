@@ -1,14 +1,35 @@
 "use client";
+import { useState, useEffect ,useRef} from "react";
 import Link from "next/link";
-import { useState } from "react";
+
+
+
 
 const CLI = () => {
-  const [command, setCommand] = useState("");
+
+  var [command, setCommand] = useState("");
   const [output, setOutput] = useState([
     "Welcome to my portfolio!",
     "Type 'help' to get a list of available commands.",
     "Use ↑ and ↓ to navigate command history.",
   ]);
+  
+
+
+  //useRef to create a new reference
+  const outputEndRef = useRef(null);
+
+  //useEffect to use scrollToBottom feature
+  useEffect(() => {
+    // Scroll to the bottom whenever the output changes
+    outputEndRef.current?.scrollIntoView({
+      behavior: "smooth",
+    });
+  }, [output]);
+
+
+
+  
 
   const commands = {
     help: (
@@ -54,8 +75,8 @@ const CLI = () => {
     ),
     about: (
       <pre>
-        I’m a developer from Nepal with a focus on learning across a wide tech
-        landscape—from <br></br>
+        &nbsp;&nbsp;&nbsp;&nbsp;I’m a developer from Nepal with a focus on
+        learning across a wide tech landscape—from <br></br>
         backend services in{" "}
         <span className="text-lime-500">.NET & Nodejs </span> to frontend
         finesse with{" "}
@@ -67,9 +88,9 @@ const CLI = () => {
         If there’s one thing I’d say defines me, it’s my drive to understand how
         each line of code connects to the bigger picture.<br></br>
         I’m building cool things—
-        <span className="text-indigo-600">one</span> project,{" "}
-        <span className="text-indigo-500"> one</span>command,
-        <span className="text-indigo-500">one</span>insight at a time.",
+        <span className="text-slate-600">one</span> project,{" "}
+        <span className="text-slate-500"> one </span>command,
+        <span className="text-slate-500"> one </span>insight at a time.",
       </pre>
     ),
     socials: (
@@ -110,11 +131,20 @@ const CLI = () => {
     clear: "clear",
   };
 
+
+
+
+
+  
   const handleCommand = (e) => {
     e.preventDefault();
+
+    //handle whitespaces--------------------------------------------------//
+    command = command.trim();
+
     let newOutput = [...output];
 
-    if (commands[command]) {
+    if (commands[command]) { 
       if (command === "clear") {
         newOutput = [
           "Welcome to my portfolio!",
@@ -133,13 +163,13 @@ const CLI = () => {
     } else {
       newOutput.push(
         <div>
-            <span className="text-cyan-400">visitor@suraj~$</span>&nbsp;
-            {command}
-          </div>,
+          <span className="text-cyan-400">visitor@suraj~$</span>&nbsp;
+          {command}
+        </div>,
         <div>
-        <span className="text-red-700">command not found</span>&nbsp;
-        {command}
-      </div>
+          <span className="text-red-700">command not found</span>&nbsp;
+          {command}
+        </div>
       );
     }
 
@@ -148,38 +178,39 @@ const CLI = () => {
   };
 
   return (
-    <div>
       <div className="text-white  font-mono flex flex-col justify-start items-start h-screen">
-        {output.map((line, index) => (
+        {output.map((line, index) => ( 
+
           <p
             key={index}
             className={`whitespace-pre-wrap
-
-         ${
+           ${
            typeof line == "string" &&
            (line.includes("help") || line.includes("commands"))
              ? "text-orange-400"
              : "text-white"
-         }
-          
-          `}
-          >
+         }`}>
             {line}
           </p>
         ))}
-        <form onSubmit={handleCommand} className="flex">
-          <span className="text-cyan-400">visitor@suraj~$</span>&nbsp;
-          <input
-            type="text"
-            value={command}
-            onChange={(e) => setCommand(e.target.value)}
-            className="bg-transparent outline-none text-purple-600 flex-1"
-            autoFocus
-          />
-        </form>
-      </div>
-    </div>
-  );
-};
+        {/* ################################   Use Reference    #####################################*/}
+        <div ref={outputEndRef} />
+        {/* ################################   Use Reference    #####################################*/}
+
+          {" "}
+          {/* keeps the view scrolled to the bottom  */}
+          <form onSubmit={handleCommand} className="flex">
+            <span className="text-cyan-400">visitor@suraj~$</span>&nbsp;
+            <input
+              type="text"
+              value={command}
+              onChange={(e) => setCommand(e.target.value)}
+              className="bg-transparent outline-none text-purple-600 flex-1"
+              autoFocus
+            />
+          </form>
+        </div>
+      );
+    };
 
 export default CLI;
