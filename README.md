@@ -1,19 +1,21 @@
 
 # CLI Portfolio 
 
-*Disclaimer: Use as Template by forking and cloning the repo
+**Disclaimer**: Use as Template by forking repo
+
 
 A command-line interface (CLI) inspired portfolio that simulates a terminal experience for showcasing your skills, projects, and professional journey. Built with Next.js, React, and Tailwind CSS, this portfolio provides an engaging, retro-themed way to explore your personal information.
 
-![CLI Portfolio Screenshot](screenshot.png) (comming soon)
+CLI Portfolio Screenshot![image](https://github.com/user-attachments/assets/47b8d00a-c7c3-42d6-b0c8-bf81bfc18a2e)
+
 
 ## 🚀 Features
 
 - **Interactive Commands:** Navigate the portfolio by typing commands like `help`, `about`, `projects`, and more.
 - **Command Autocomplete & History:** Command history and intuitive prompts create a smooth user experience.
 - **Keyword Highlighting:** Certain commands are highlighted to enhance readability and the CLI feel.
-- **Responsive Design:** Tailored for both desktop and mobile users, ensuring accessibility.
-- **Auto-Scroll:** The terminal output auto-scrolls as new commands are entered, keeping the focus on the latest interaction. (coming soon)
+- **Responsive Design:** Tailored for both desktop and mobile users, ensuring accessibility.(coming soon)
+- **Auto-Scroll:** The terminal output auto-scrolls as new commands are entered, keeping the focus on the latest interaction. 
 
 ## 🛠️ Tech Stack
 
@@ -66,7 +68,7 @@ Push your code to GitHub.
 Go to Vercel and create a new project.
 Import the repository and follow the instructions for deployment.
 📸 Screenshots
-Include screenshots of your project to show how it looks. (e.g., screenshot.png)(coming soon)
+Include screenshots of your project to show how it looks. ![image](https://github.com/user-attachments/assets/98489253-58a7-4df7-85bd-2331508f155a)
 
 
 ## 🎨 Customization
