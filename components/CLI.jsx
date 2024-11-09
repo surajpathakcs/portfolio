@@ -124,6 +124,26 @@ const CLI = () => {
     clear: "clear",
   };
 
+//handle every new keypress
+  const handleKeyPress = (event) =>{
+    if(event.key == "Tab"){
+      event.preventDefault();
+  
+      const  matchingCommands = Object.keys(commands).filter(cmd => 
+      cmd.startsWith(command.toLowerCase()));  //finds the number of matching commands
+
+      if(matchingCommands.length>=1){
+        setCommand(matchingCommands[0]); //sets first suggestion to command
+      } //checks for number of matching commands available
+      
+    }
+  }
+
+  //handle every new key change/updation 
+  const handleChange = (event) =>{
+    setCommand(event.target.value);  //updates command state as user types
+  }
+
   const handleCommand = (e) => {
     e.preventDefault();
 
@@ -194,7 +214,8 @@ const CLI = () => {
         <input
           type="text"
           value={command}
-          onChange={(e) => setCommand(e.target.value)}
+          onChange={handleChange}
+          onKeyDown={handleKeyPress}
           className="bg-transparent outline-none text-purple-600 flex-1"
           autoFocus
         />
