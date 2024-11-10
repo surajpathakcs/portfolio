@@ -4,6 +4,10 @@ import Link from "next/link";
 
 const CLI = () => {
   var [command, setCommand] = useState("");
+  const [history, setHistory] = useState([]);
+  const [historyIndex, setHistoryIndex] = useState(-1);
+
+  
   const [output, setOutput] = useState([
     "Welcome to my portfolio!",
     "Type 'help' to get a list of available commands.",
@@ -126,6 +130,7 @@ const CLI = () => {
 
 //handle every new keypress
   const handleKeyPress = (event) =>{
+    
     if(event.key == "Tab"){
       event.preventDefault();
   
@@ -137,7 +142,38 @@ const CLI = () => {
       } //checks for number of matching commands available
       
     }
+    //Arrow key navigation
+    if(event.key == "ArrowUp" || event.key == "ArrowDown"){
+      event.preventDefault();
+      
+      setHistoryIndex((historyIndex)=>{
+        if(event.key=="ArrowUp"){
+          const newIndex = Math.max(historyIndex-1,0)
+          setCommand(history[newIndex] || "")
+          return newIndex
+        }else if(event.key=="ArrowDown"){
+          const newIndex = Math.min(history.length-1, historyIndex + 1)
+          setCommand(history[newIndex] || "")
+          return newIndex
+        }
+        return historyIndex
+      })
+      
+      
+      // if(event.key=="ArrowUp"){
+      //   setHistoryIndex((max(historyIndex-1,0)))
+      //   setCommand(history[historyIndex-1])
+      // }else if(event.key=="ArrowDown"){
+      //   if(historyIndex < history.length -1 ){
+      //     setHistoryIndex((historyIndex+1))
+      //     setCommand(history[historyIndex+1])
+      //   }
+      // }else{
+      //   setCommand("")
+      // }
+    }
   }
+  
 
   //handle every new key change/updation 
   const handleChange = (event) =>{
@@ -151,6 +187,9 @@ const CLI = () => {
     command = command.trim();
 
     let newOutput = [...output];
+
+    setHistory([...history,command])
+    setHistoryIndex(history.length)
 
     if (commands[command]) {
       if (command === "clear") {
