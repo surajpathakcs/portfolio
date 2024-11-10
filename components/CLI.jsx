@@ -142,7 +142,7 @@ const CLI = () => {
       } //checks for number of matching commands available
       
     }
-    //Arrow key navigation
+    //Arrow key navigation 
     if(event.key == "ArrowUp" || event.key == "ArrowDown"){
       event.preventDefault();
       
@@ -159,18 +159,6 @@ const CLI = () => {
         return historyIndex
       })
       
-      
-      // if(event.key=="ArrowUp"){
-      //   setHistoryIndex((max(historyIndex-1,0)))
-      //   setCommand(history[historyIndex-1])
-      // }else if(event.key=="ArrowDown"){
-      //   if(historyIndex < history.length -1 ){
-      //     setHistoryIndex((historyIndex+1))
-      //     setCommand(history[historyIndex+1])
-      //   }
-      // }else{
-      //   setCommand("")
-      // }
     }
   }
   
