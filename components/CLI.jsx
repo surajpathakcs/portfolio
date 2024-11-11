@@ -1,13 +1,28 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { GetServerSideProps } from "next";
 
-const CLI = () => {
+const CLI = ({ secrets}) => {
+  const { secretOne, secretTwo } = secrets;
   var [command, setCommand] = useState("");
   const [history, setHistory] = useState([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
+  const [theme , setTheme] = useState("dark");
+
+
+
+  const onSubmit = (e) => {
+    e.preventDefault(); // Prevent form from refreshing the page
+    handleSecretCommand(command); // Call handleSecretCommand with the current command
+    setCommand(""); // Clear the input after processing the command
+  };
+
+
 
   
+
+
   const [output, setOutput] = useState([
     "Welcome to my portfolio!",
     "Type 'help' to get a list of available commands.",
@@ -48,7 +63,7 @@ const CLI = () => {
             <p className="text-orange-500"> projects </p>{" "}
             <p className="font-thin">- View some of my cool projects</p>
           </div>
-          
+
           <div className="flex gap-2 items-center">
             <p className="text-orange-500"> clear </p>{" "}
             <p className="font-thin">- Clear the terminal</p>
@@ -58,8 +73,9 @@ const CLI = () => {
     ),
     about: (
       <pre>
-        &nbsp;&nbsp;&nbsp;&nbsp;I’m a <span className="text-orange-500">developer</span> from Nepal with a focus on
-        learning across a wide tech landscape—from <br></br>
+        &nbsp;&nbsp;&nbsp;&nbsp;I’m a{" "}
+        <span className="text-orange-500">developer</span> from Nepal with a
+        focus on learning across a wide tech landscape—from <br></br>
         backend services in{" "}
         <span className="text-lime-500">.NET & Nodejs </span> to frontend
         finesse with{" "}
@@ -107,66 +123,90 @@ const CLI = () => {
 
     skills: (
       <pre>
-        <span className="text-orange-500">
-          Technical Skills: 
-        </span> 
+        <span className="text-orange-500">Technical Skills:</span>
         <ul className="pl-9">
-        <li><span className="text-orange-500">Backend:</span> Node.js, Express, .NET</li>
-        <li><span className="text-orange-500">Frontend:</span> React, Next.js, Tailwind</li>
-        <li><span className="text-orange-500">Databases:</span> MongoDB, MySQL,</li>
-        <li><span className="text-orange-500">Version </span>Control: Git, GitHub</li>
-        <li><span className="text-orange-500">Other:</span> Docker, Bash</li>
-      </ul>
+          <li>
+            <span className="text-orange-500">Backend:</span> Node.js, Express,
+            .NET
+          </li>
+          <li>
+            <span className="text-orange-500">Frontend:</span> React, Next.js,
+            Tailwind
+          </li>
+          <li>
+            <span className="text-orange-500">Databases:</span> MongoDB, MySQL,
+          </li>
+          <li>
+            <span className="text-orange-500">Version </span>Control: Git,
+            GitHub
+          </li>
+          <li>
+            <span className="text-orange-500">Other:</span> Docker, Bash
+          </li>
+        </ul>
       </pre>
     ),
 
-    projects:
-    <pre className="whitespace-pre-wrap break-words">
-      <span className="text-orange-500">Projects:
-        </span><br />1. <span className="text-green-500">CLI Portfolio</span> - This CLI Portfolio that you are on right now ,  you can view the source code in my github using &apos;socials&apos; command <br />
-    </pre>,
+    projects: (
+      <pre className="whitespace-pre-wrap break-words">
+        <span className="text-orange-500">Projects:</span>
+        <br />
+        1. <span className="text-green-500">CLI Portfolio</span> - This CLI
+        Portfolio that you are on right now , you can view the source code in my
+        github using &apos;socials&apos; command <br />
+      </pre>
+    ),
     clear: "clear",
   };
 
-//handle every new keypress
-  const handleKeyPress = (event) =>{
-    
-    if(event.key == "Tab"){
-      event.preventDefault();
-  
-      const  matchingCommands = Object.keys(commands).filter(cmd => 
-      cmd.startsWith(command.toLowerCase()));  //finds the number of matching commands
+  useEffect(()=>{
+    if(command == secretOne){
+      document.body.style.backgroundColor="#1a1a1a";
+      document.body.style.color = "#f5f5f5";
+    }else{
+      document.body.style.backgroundColor = "#ffffff";
+      document.body.style.color = "#000000";
+    }
+  },[command])
 
-      if(matchingCommands.length>=1){
+  //handle every new keypress
+  const handleKeyPress = (event) => {
+    if (event.key == "Tab") {
+      event.preventDefault();
+
+      const matchingCommands = Object.keys(commands).filter((cmd) =>
+        cmd.startsWith(command.toLowerCase())
+      ); //finds the number of matching commands
+
+      if (matchingCommands.length >= 1) {
         setCommand(matchingCommands[0]); //sets first suggestion to command
       } //checks for number of matching commands available
-      
     }
-    //Arrow key navigation 
-    if(event.key == "ArrowUp" || event.key == "ArrowDown"){
+    //Arrow key navigation
+    if (event.key == "ArrowUp" || event.key == "ArrowDown") {
       event.preventDefault();
-      
-      setHistoryIndex((historyIndex)=>{
-        if(event.key=="ArrowUp"){
-          const newIndex = Math.max(historyIndex-1,0)
-          setCommand(history[newIndex] || "")
-          return newIndex
-        }else if(event.key=="ArrowDown"){
-          const newIndex = Math.min(history.length-1, historyIndex + 1)
-          setCommand(history[newIndex] || "")
-          return newIndex
-        }
-        return historyIndex
-      })
-      
-    }
-  }
-  
 
-  //handle every new key change/updation 
-  const handleChange = (event) =>{
-    setCommand(event.target.value);  //updates command state as user types
-  }
+      setHistoryIndex((historyIndex) => {
+        if (event.key == "ArrowUp") {
+          const newIndex = Math.max(historyIndex - 1, 0);
+          setCommand(history[newIndex] || "");
+          return newIndex;
+        } else if (event.key == "ArrowDown") {
+          const newIndex = Math.min(history.length - 1, historyIndex + 1);
+          setCommand(history[newIndex] || "");
+          return newIndex;
+        }
+        return historyIndex;
+      });
+    }
+
+    
+  };
+
+  //handle every new key change/updation
+  const handleChange = (event) => {
+    setCommand(event.target.value); //updates command state as user types
+  };
 
   const handleCommand = (e) => {
     e.preventDefault();
@@ -176,8 +216,11 @@ const CLI = () => {
 
     let newOutput = [...output];
 
-    setHistory([...history,command])
-    setHistoryIndex(history.length)
+    setHistory([...history, command]);
+    setHistoryIndex(history.length);
+
+
+    
 
     if (commands[command]) {
       if (command === "clear") {
@@ -190,17 +233,23 @@ const CLI = () => {
         newOutput.push(
           <div>
             <span className="text-cyan-400">visitor@suraj~$</span>&nbsp;
-            <span className="text-purple-600">
-              {command}
-              </span>
+            <span className="text-purple-600">{command}</span>
           </div>,
           commands[command],
-          <br/>
+          <br />
         );
       }
     } else {
-      newOutput.push(
-        <div>
+      if(command == secretOne || command == secretTwo){
+        newOutput.push(
+          <div>
+            <span className="text-cyan-400">visitor@suraj~$</span>&nbsp;
+            <span className="text-yellow-200">{command}</span>
+          </div>
+      )}
+      else{    
+        newOutput.push(
+          <div>
           <span className="text-cyan-400">visitor@suraj~$</span>&nbsp;
           {command}
         </div>,
@@ -208,16 +257,19 @@ const CLI = () => {
           <span className="text-red-700">command not found</span>&nbsp;
           {command}
         </div>,
-        <br/>
+        <br />
       );
     }
+    }
+    
 
     setOutput(newOutput);
     setCommand("");
   };
+  
 
   return (
-    <div className="text-white  font-mono flex flex-col justify-start items-start h-screen">
+    <div className="text-white  font-mono flex flex-col justify-start items-start h-screen ">
       {output.map((line, index) => (
         <p
           key={index}
