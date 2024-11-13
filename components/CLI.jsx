@@ -17,9 +17,6 @@ const CLI = ({ secrets}) => {
     handleSecretCommand(command); // Call handleSecretCommand with the current command
     setCommand(""); // Clear the input after processing the command
   };
-
-
-
   
 
 
@@ -159,18 +156,28 @@ const CLI = ({ secrets}) => {
     clear: "clear",
   };
 
+
   useEffect(()=>{
-    if(command == secretOne){
-      document.body.style.backgroundColor="#1a1a1a";
-      document.body.style.color = "#f5f5f5";
-    }else{
-      document.body.style.backgroundColor = "#ffffff";
-      document.body.style.color = "#000000";
+    if(theme === "dark"){
+      document.documentElement.style.setProperty('--bg-color', '#010101');
+      // document.documentElement.style.setProperty('--text-color', '#f1f1f1');
     }
-  },[command])
+    if(theme==="light"){
+      document.documentElement.style.setProperty('--bg-color', '#940044'); //940064
+      // document.documentElement.style.setProperty('--text-color', '#f1faf1');
+    }    
+  },[theme])
 
   //handle every new keypress
   const handleKeyPress = (event) => {
+    if(event.key == "Enter"){
+      if (command === secretOne) {
+        setTheme("light");
+      } else if (command === secretTwo) {
+        setTheme("dark");
+      }
+    }
+
     if (event.key == "Tab") {
       event.preventDefault();
 
