@@ -11,15 +11,6 @@ const CLI = ({ secrets}) => {
   const [theme , setTheme] = useState("dark");
 
 
-
-  const onSubmit = (e) => {
-    e.preventDefault(); // Prevent form from refreshing the page
-    handleSecretCommand(command); // Call handleSecretCommand with the current command
-    setCommand(""); // Clear the input after processing the command
-  };
-  
-
-
   const [output, setOutput] = useState([
     "Welcome to my portfolio!",
     "Type 'help' to get a list of available commands.",
@@ -171,9 +162,9 @@ const CLI = ({ secrets}) => {
   //handle every new keypress
   const handleKeyPress = (event) => {
     if(event.key == "Enter"){
-      if (command === secretOne) {
+      if (command === secretOne || command === "light") {
         setTheme("light");
-      } else if (command === secretTwo) {
+      } else if (command === secretTwo || command === "dark") {
         setTheme("dark");
       }
     }
@@ -247,7 +238,7 @@ const CLI = ({ secrets}) => {
         );
       }
     } else {
-      if(command == secretOne || command == secretTwo){
+      if(command == secretOne || command == secretTwo || command === "light" || command === "dark"){
         newOutput.push(
           <div>
             <span className="text-cyan-400">visitor@suraj~$</span>&nbsp;
