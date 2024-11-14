@@ -21,7 +21,7 @@ export default function Home() {
   \\_____/   \\__,_| |_|     \\__,_|   | |
                                   _/  |
                                 |____/ 
-          `}
+                                                      -I LOVE COMPUTERS`}
         </pre>
       </div>
       <CLI secrets={ secrets}/>

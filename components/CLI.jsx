@@ -13,7 +13,7 @@ const CLI = ({ secrets}) => {
 
 
   const [output, setOutput] = useState([
-    "Welcome to my portfolio!",
+    "Hii There!",
     "Type 'help' to get a list of available commands.",
     "Use ↑ and ↓ to navigate command history.",
   ]);
