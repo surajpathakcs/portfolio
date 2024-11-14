@@ -11,6 +11,7 @@ const CLI = ({ secrets}) => {
   const [theme , setTheme] = useState("dark");
 
 
+
   const [output, setOutput] = useState([
     "Welcome to my portfolio!",
     "Type 'help' to get a list of available commands.",
@@ -122,14 +123,14 @@ const CLI = ({ secrets}) => {
             Tailwind
           </li>
           <li>
-            <span className="text-orange-500">Databases:</span> MongoDB, MySQL,
+            <span className="text-orange-500">Databases:</span> MongoDB, MySQL, 
           </li>
           <li>
-            <span className="text-orange-500">Version </span>Control: Git,
+            <span className="text-orange-500">Version Control:</span> Git,
             GitHub
           </li>
           <li>
-            <span className="text-orange-500">Other:</span> Docker, Bash
+            <span className="text-orange-500">Other:</span> Docker, Bash , C, C ++ , Pyhton 
           </li>
         </ul>
       </pre>
