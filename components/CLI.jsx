@@ -52,6 +52,10 @@ const CLI = ({ secrets}) => {
             <p className="text-orange-500"> projects </p>{" "}
             <p className="font-thin">- View some of my cool projects</p>
           </div>
+          <div className="flex gap-2 items-center">
+            <p className="text-orange-500"> resume </p>{" "}
+            <p className="font-thin">- Show my resume</p>
+          </div>
 
           <div className="flex gap-2 items-center">
             <p className="text-orange-500"> clear </p>{" "}
@@ -138,13 +142,37 @@ const CLI = ({ secrets}) => {
 
     projects: (
       <pre className="whitespace-pre-wrap break-words">
-        <span className="text-orange-500">Projects:</span>
+        <span className="text-orange-500">Projects</span>
         <br />
-        1. <span className="text-green-500">CLI Portfolio</span> - This CLI
+        <span className="text-green-500"><a href="https://github.com/surajpathakcs/portfolio" 
+        target="_blank" 
+        rel="noopener noreferrer">CLI Portfolio</a></span> - This CLI
         Portfolio that you are on right now , you can view the source code in my
         github using &apos;socials&apos; command <br />
+        <br />
+        <span className="text-green-500"><a href="https://github.com/surajpathakcs/urlShortener" 
+        target="_blank" 
+        rel="noopener noreferrer">URL Shortner</a></span> -  A simple URL shortener built with Node.js and the shortid package.
+         It generates unique, short URLs for long links and runs locally on localhost.<br />
       </pre>
     ),
+
+    resume:(
+      <pre>
+      <span className="text-orange-500">Resume: </span> 
+      <span className="text-green-500">
+        <a 
+          href="resume.pdf" // Change this to your actual resume path
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="underline"
+        >
+          View Resume (PDF)
+        </a>
+      </span>
+    </pre>
+    ),
+    
     clear: "clear",
   };
 
