@@ -127,14 +127,14 @@ const CLI = ({ secrets}) => {
             Tailwind
           </li>
           <li>
-            <span className="text-orange-500">Databases:</span> MongoDB, MySQL, 
+            <span className="text-orange-500">Databases:</span> MongoDB, MySQL
           </li>
           <li>
             <span className="text-orange-500">Version Control:</span> Git,
             GitHub
           </li>
           <li>
-            <span className="text-orange-500">Other:</span> Docker, Bash , C, C ++ , Pyhton 
+            <span className="text-orange-500">Miscellaneous:</span> Docker, Bash , C, C ++ , Python 
           </li>
         </ul>
       </pre>
