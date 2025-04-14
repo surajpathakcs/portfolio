@@ -154,6 +154,16 @@ const CLI = ({ secrets}) => {
         target="_blank" 
         rel="noopener noreferrer">URL Shortner</a></span> -  A simple URL shortener built with Node.js and the shortid package.
          It generates unique, short URLs for long links and runs locally on localhost.<br />
+         <span className="text-green-500"><a href="https://github.com/surajpathakcs/ecommerce" 
+        target="_blank" 
+        rel="noopener noreferrer">E-commerce Platform</a></span> -  A complete ASP.NET Core MVC-based e-commerce site with Khalti 
+        payment integration, admin login  client-side cart using localStorage, and SQL Server backend. Supports product listing, 
+        checkout, order saving, and basic admin management.<br />
+        <span className="text-green-500"><a href="https://github.com/surajpathakcs/urlShortener" 
+        target="_blank" 
+        rel="noopener noreferrer">Ward Alert</a></span> -  A training management system where admins post trainings and users
+         register for upcoming sessions. Built with ASP.NET Core MVC, it handles registration workflows, training status 
+         (ongoing/upcoming/expired), and admin verification by looking at the citizenship photos uploaded by registrant.<br />
       </pre>
     ),
 
