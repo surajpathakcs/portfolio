@@ -3,14 +3,12 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { GetServerSideProps } from "next";
 
-const CLI = ({ secrets}) => {
+const CLI = ({ secrets }) => {
   const { secretOne, secretTwo } = secrets;
   var [command, setCommand] = useState("");
   const [history, setHistory] = useState([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
-  const [theme , setTheme] = useState("dark");
-
-
+  const [theme, setTheme] = useState("dark");
 
   const [output, setOutput] = useState([
     "Hii There!",
@@ -97,18 +95,18 @@ const CLI = ({ secrets}) => {
             <span className="text-blue-500">GitHub</span>
           </Link>
           <Link
-            href="https://linkedin.com/in/surajintheframe"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span className="text-blue-500">LinkedIn</span>
-          </Link>
-          <Link
             href="https://twitter.com/surajintheframe"
             target="_blank"
             rel="noopener noreferrer"
           >
             <span className="text-blue-500">Twitter</span>
+          </Link>
+          <Link
+            href="mailto:surajintheframe@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="text-blue-500">Email</span>
           </Link>
         </div>
       </div>
@@ -119,22 +117,23 @@ const CLI = ({ secrets}) => {
         <span className="text-orange-500">Technical Skills:</span>
         <ul className="pl-9">
           <li>
-            <span className="text-orange-500">Backend:</span> Node.js, Express,
-            .NET
-          </li>
-          <li>
-            <span className="text-orange-500">Frontend:</span> React, Next.js,
-            Tailwind
+            <span className="text-orange-500">Frameworks and Libraries:</span>{" "}
+            Node.js, .NET , Express, ,React, Next.js, Tailwind
           </li>
           <li>
             <span className="text-orange-500">Databases:</span> MongoDB, MySQL
+          </li>
+          <li>
+            <span className="text-orange-500">Languages:</span> Javascript , C#
+            , Python , C++
           </li>
           <li>
             <span className="text-orange-500">Version Control:</span> Git,
             GitHub
           </li>
           <li>
-            <span className="text-orange-500">Miscellaneous:</span> Docker, Bash , C, C ++ , Python 
+            <span className="text-orange-500">Miscellaneous:</span> Docker, Bash
+            , Bootstrap ,Postman , wsl
           </li>
         </ul>
       </pre>
@@ -144,65 +143,94 @@ const CLI = ({ secrets}) => {
       <pre className="whitespace-pre-wrap break-words">
         <span className="text-orange-500">Projects</span>
         <br />
-        <span className="text-green-500"><a href="https://github.com/surajpathakcs/portfolio" 
-        target="_blank" 
-        rel="noopener noreferrer">CLI Portfolio</a></span> - This CLI
-        Portfolio that you are on right now , you can view the source code in my
-        github using &apos;socials&apos; command <br />
+        <span className="text-green-500">
+          <a
+            href="https://github.com/surajpathakcs/portfolio"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            CLI Portfolio
+          </a>
+        </span>{" "}
+        - This CLI Portfolio that you are on right now , you can view the source
+        code in my github using &apos;socials&apos; command <br />
         <br />
-        <span className="text-green-500"><a href="https://github.com/surajpathakcs/urlShortener" 
-        target="_blank" 
-        rel="noopener noreferrer">URL Shortner</a></span> -  A simple URL shortener built with Node.js and the shortid package.
-         It generates unique, short URLs for long links and runs locally on localhost.<br />
+        <span className="text-green-500">
+          <a
+            href="https://github.com/surajpathakcs/urlShortener"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            URL Shortner
+          </a>
+        </span>{" "}
+        - A simple URL shortener built with Node.js and the shortid package. It
+        generates unique, short URLs for long links and runs locally on
+        localhost.
         <br />
-         <span className="text-green-500"><a href="https://github.com/surajpathakcs/ecommerce" 
-        target="_blank" 
-        rel="noopener noreferrer">E-commerce Platform</a></span> -  A complete ASP.NET Core MVC-based e-commerce site with Khalti 
-        payment integration, admin login  client-side cart using localStorage, and SQL Server backend. Supports product listing, 
-        checkout, order saving, and basic admin management.<br />
         <br />
-        <span className="text-green-500"><a href="#" 
-        target="_blank" 
-        rel="noopener noreferrer">Ward Alert</a></span> -  A training management system where admins post trainings and users
-         register for upcoming sessions. Built with ASP.NET Core MVC, it handles registration workflows, training status 
-         (ongoing/upcoming/expired), and admin verification by looking at the citizenship photos uploaded by registrant.<br />
+        <span className="text-green-500">
+          <a
+            href="https://github.com/surajpathakcs/ecommerce"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            E-commerce Platform
+          </a>
+        </span>{" "}
+        - A complete ASP.NET Core MVC-based e-commerce site with Khalti payment
+        integration, admin login client-side cart using localStorage, and SQL
+        Server backend. Supports product listing, checkout, order saving, and
+        basic admin management.
+        <br />
+        <br />
+        <span className="text-green-500">
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            Ward Alert
+          </a>
+        </span>{" "}
+        - A training management system where admins post trainings and users
+        register for upcoming sessions. Built with ASP.NET Core MVC, it handles
+        registration workflows, training status (ongoing/upcoming/expired), and
+        admin verification by looking at the citizenship photos uploaded by
+        registrant.
+        <br />
       </pre>
     ),
 
-    resume:(
+    resume: (
       <pre>
-      <span className="text-orange-500">Resume: </span> 
-      <span className="text-green-500">
-        <a 
-          href="resume.pdf" // Change this to your actual resume path
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="underline"
-        >
-          View Resume (PDF)
-        </a>
-      </span>
-    </pre>
+        <span className="text-orange-500">Resume: </span>
+        <span className="text-green-500">
+          <a
+            href="resume.pdf" // Change this to your actual resume path
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline"
+          >
+            View Resume (PDF)
+          </a>
+        </span>
+      </pre>
     ),
-    
+
     clear: "clear",
   };
 
-
-  useEffect(()=>{
-    if(theme === "dark"){
-      document.documentElement.style.setProperty('--bg-color', '#010101');
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.style.setProperty("--bg-color", "#010101");
       // document.documentElement.style.setProperty('--text-color', '#f1f1f1');
     }
-    if(theme==="light"){
-      document.documentElement.style.setProperty('--bg-color', '#940044'); //940064
+    if (theme === "light") {
+      document.documentElement.style.setProperty("--bg-color", "#940044"); //940064
       // document.documentElement.style.setProperty('--text-color', '#f1faf1');
-    }    
-  },[theme])
+    }
+  }, [theme]);
 
   //handle every new keypress
   const handleKeyPress = (event) => {
-    if(event.key == "Enter"){
+    if (event.key == "Enter") {
       if (command === secretOne || command === "light") {
         setTheme("light");
       } else if (command === secretTwo || command === "dark") {
@@ -238,8 +266,6 @@ const CLI = ({ secrets}) => {
         return historyIndex;
       });
     }
-
-    
   };
 
   //handle every new key change/updation
@@ -257,9 +283,6 @@ const CLI = ({ secrets}) => {
 
     setHistory([...history, command]);
     setHistoryIndex(history.length);
-
-
-    
 
     if (commands[command]) {
       if (command === "clear") {
@@ -279,33 +302,36 @@ const CLI = ({ secrets}) => {
         );
       }
     } else {
-      if(command == secretOne || command == secretTwo || command === "light" || command === "dark"){
+      if (
+        command == secretOne ||
+        command == secretTwo ||
+        command === "light" ||
+        command === "dark"
+      ) {
         newOutput.push(
           <div>
             <span className="text-cyan-400">visitor@suraj~$</span>&nbsp;
             <span className="text-yellow-200">{command}</span>
           </div>
-      )}
-      else{    
+        );
+      } else {
         newOutput.push(
           <div>
-          <span className="text-cyan-400">visitor@suraj~$</span>&nbsp;
-          {command}
-        </div>,
-        <div>
-          <span className="text-red-700">command not found</span>&nbsp;
-          {command}
-        </div>,
-        <br />
-      );
+            <span className="text-cyan-400">visitor@suraj~$</span>&nbsp;
+            {command}
+          </div>,
+          <div>
+            <span className="text-red-700">command not found</span>&nbsp;
+            {command}
+          </div>,
+          <br />
+        );
+      }
     }
-    }
-    
 
     setOutput(newOutput);
     setCommand("");
   };
-  
 
   return (
     <div className="text-white  font-mono flex flex-col justify-start items-start h-screen ">
